@@ -27,7 +27,7 @@ check out this [help page](https://docs.github.com/en/github/getting-started-wit
 
 Once Anaconda, Python, and Git are installed, here are a list of packages that still need to be installed. To install 
 these, use pip as follows:
-`pip install tensorflow keras keras-rl2 gym>=0.2.3 pygame argparse uuid xlrd pandas matplotlib`
+`pip install tensorflow keras keras-rl2 gym==0.2.3 pygame argparse uuid xlrd pandas matplotlib`
 
 ## Getting Started
 Step 0: Install python and the required packages by following the Prerequisites / Installation above.
