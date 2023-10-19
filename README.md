@@ -31,17 +31,11 @@ these, use pip as follows:
 
 ## Getting Started
 Step 0: Install python and the required packages by following the Prerequisites / Installation above.
-Step 1: Follow instructions on how to set up an SSH key between your computer and MIT github:
-[git help link](https://docs.github.com/en/enterprise-server@2.19/github/authenticating-to-github/connecting-to-github-with-ssh)
+Step 1: Download Github Desktop
 
-Finally: Clone the repository via command prompt:
-```
-git clone git@github.mit.edu:BWSI-SGAI-2021/SGW_QB1.git
-cd SGW
-git status
-```
+Click the green "Code" button and then click open with Github Desktop
 
-This will get all the repository files on your system. Python files in the main directory can be run to get
+This (should) get all the repository files on your system. Python files in the main directory can be run to get
 an idea of how to use the game.
 
 # Game Details
@@ -51,7 +45,7 @@ from an integrated development environment (IDE). The entry points for the code 
 For example, to run basic tests, use the following command. NOTE: this command prints the help commands
 for the CLI options. It will show you the usage and options for the CLI.
 ```
-python RUN_Basic.Tests.py -h
+python RUN_Human.py
 ```
 
 More details about the game and this software implementation will be provided over time via lectures.
