@@ -16,8 +16,8 @@ class SGW(gym.Env):
         self.map_file = None
         self.rand_profile = MapProfiles.uniform
         # Grid set up
-        self.num_rows = 17
-        self.num_cols = 17
+        self.num_rows = 10
+        self.num_cols = 10
         self.grid = Grid(map_file=self.map_file, cols=self.num_cols, rows=self.num_rows,
                          random_profile=self.rand_profile)
         # Main parameters

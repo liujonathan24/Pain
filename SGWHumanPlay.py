@@ -198,8 +198,8 @@ class SGW:
         zombing_texture = pg.transform.scale(pg.image.load(os.path.join(computer_path, "assets\Zombing.png")),
                                              (80, 80))"""
 
-        for r_ in range(self.env.grid.rows):
-            for c_ in range(self.env.grid.cols):
+        for r_ in range(len(self.env.grid.visible_grid)):
+            for c_ in range(len(self.env.grid.visible_grid[0])):
                 if self.FOGOFWAR:
                     cell = self.env.grid.visible_grid[r_][c_]
                     # Set the right background color
