@@ -43,7 +43,7 @@ class SGW(gym.Env):
         self.turns_executed = 0
         self._num_actions = len(Actions)
         self.action_space = spaces.Discrete(self._num_actions)
-        self.observation_space = spaces.Box(low=0, high=70, shape=(self.num_rows + 1, self.num_cols), dtype='uint8')
+        self.observation_space = spaces.Box(low=0, high=70, shape=(self.num_rows + 1, self.num_cols))
         obs = self.get_obs()
         return obs
 
