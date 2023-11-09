@@ -24,6 +24,9 @@ class Grid:
         self.turns = 0
         self.zombies_squished = 0
         self.zombie_count = 0
+        self.pedestrians_squished = 0
+        self.pedestrian_count = 0
+        self.pedestrian_count = 0
 
         # Shown squares
         self.visible_range = []
