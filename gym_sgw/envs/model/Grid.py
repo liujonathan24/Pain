@@ -22,6 +22,7 @@ class Grid:
         self.grid = self.random_grid()
         self.map_max_energy = None
         self.turns = 0
+        self.zombies_squished = 0
 
         # Shown squares
         self.visible_range = []
