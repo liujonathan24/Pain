@@ -27,6 +27,8 @@ class Grid:
         self.pedestrians_squished = 0
         self.pedestrian_count = 0
         self.pedestrian_count = 0
+        self.victims_squished = 0
+        self.victim_count = 0
 
         # Shown squares
         self.visible_range = []
