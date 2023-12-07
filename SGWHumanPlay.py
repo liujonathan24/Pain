@@ -50,6 +50,7 @@ class SGW:
         self.env.rand_profile = self.rand_prof
         self.env.num_rows = self.num_rows
         self.env.num_cols = self.num_cols
+        print("after:"+str((self.env.num_rows, self.env.num_cols)))
         self.env.reset()
         # Report success
         print('Created new environment {0} with GameID: {1}'.format(self.ENV_NAME, self.GAME_ID))
@@ -135,69 +136,6 @@ class SGW:
         zombing_texture = pg.transform.scale(
             pg.image.load(os.path.join(os.path.join(computer_path, "assets"), "Zombing.png")), (80, 80))
 
-        """wall_b_texture = pg.transform.scale(pg.image.load(os.path.join(computer_path, "assets\WallBright.png")),
-                                            (80, 80))
-        wall_d_texture = pg.transform.scale(pg.image.load(os.path.join(computer_path, "assets\WallDark.png")),
-                                            (80, 80))
-        hospital_b_texture = pg.transform.scale(
-            pg.image.load(os.path.join(computer_path, "assets\HospitalBright.png")),
-            (80, 80))
-        hospital_d_texture = pg.transform.scale(
-            pg.image.load(os.path.join(computer_path, "assets\HospitalDark.png")),
-            (80, 80))
-        fire_b_texture = pg.transform.scale(pg.image.load(os.path.join(computer_path, "assets\FireBright.png")),
-                                            (80, 80))
-        fire_d_texture = pg.transform.scale(pg.image.load(os.path.join(computer_path, "assets\FireDark.png")),
-                                            (80, 80))
-        zombie_texture = pg.transform.smoothscale(pg.image.load(os.path.join(computer_path, "assets\PVZ.png")),
-                                                  (50, 80))
-        zombie_texture_right = pg.transform.smoothscale(pg.image.load(os.path.join(computer_path, "assets\ZombieRight.png")), (50, 80))
-        zombie_texture_down = pg.transform.smoothscale(
-            pg.image.load(os.path.join(computer_path, "assets\ZombieDown.png")),
-                                                  (50, 80))
-        zombie_texture_up = pg.transform.smoothscale(
-            pg.image.load(os.path.join(computer_path, "assets\ZombieUp.png")),
-                                                  (50, 80))
-        zombie_texture_left = pg.transform.smoothscale(
-            pg.image.load(os.path.join(computer_path, "assets\ZombieLeft.png")),
-                                                  (50, 80))
-        ambulance_texture_up = pg.transform.scale(
-            pg.image.load(os.path.join(computer_path, "assets\AmbulanceUp.png")),
-            (80, 80))
-        ambulance_texture_right = pg.transform.scale(
-            pg.image.load(os.path.join(computer_path, "assets\AmbulanceRight.png")), (80, 80))
-        ambulance_texture_down = pg.transform.scale(
-            pg.image.load(os.path.join(computer_path, "assets\AmbulanceDown.png")), (80, 80))
-        ambulance_texture_left = pg.transform.scale(
-            pg.image.load(os.path.join(computer_path, "assets\AmbulanceLeft.png")), (80, 80))
-        pedestrian_texture = pg.transform.scale(pg.image.load(os.path.join(computer_path, "assets\Pedestrian.png")),
-                                                (80, 80))
-        pedestrian_texture_right =pg.transform.scale(pg.image.load(os.path.join(computer_path, "assets\PedestrianRight.png")),
-                                                (80, 80))
-        pedestrian_texture_up = pg.transform.scale(
-            pg.image.load(os.path.join(computer_path, "assets\PedestrianUp.png")),
-            (80, 80))
-        pedestrian_texture_left = pg.transform.scale(
-            pg.image.load(os.path.join(computer_path, "assets\PedestrianLeft.png")),
-            (80, 80))
-        pedestrian_texture_down = pg.transform.scale(
-            pg.image.load(os.path.join(computer_path, "assets\PedestrianDown.png")),
-            (80, 80))
-        patient_texture = pg.transform.scale(pg.image.load(os.path.join(computer_path, "assets\Patient.png")),
-                                                (80, 80))
-        patient_d_texture = pg.transform.scale(pg.image.load(os.path.join(computer_path, "assets\PatientDark.png")),
-                                             (80, 80))
-        ambulance_texture_up_full = pg.transform.scale(
-            pg.image.load(os.path.join(computer_path, "assets\LightsUp.png")), (80, 80))
-        ambulance_texture_right_full = pg.transform.scale(
-            pg.image.load(os.path.join(computer_path, "assets\LightsRight.png")), (80, 80))
-        ambulance_texture_down_full = pg.transform.scale(
-            pg.image.load(os.path.join(computer_path, "assets\LightsDown.png")), (80, 80))
-        ambulance_texture_left_full = pg.transform.scale(
-            pg.image.load(os.path.join(computer_path, "assets\LightsLeft.png")), (80, 80))
-        zombing_texture = pg.transform.scale(pg.image.load(os.path.join(computer_path, "assets\Zombing.png")),
-                                             (80, 80))"""
-
         for r_ in range(len(self.env.grid.visible_grid)):
             for c_ in range(len(self.env.grid.visible_grid[0])):
                 if self.FOGOFWAR:
@@ -259,7 +197,6 @@ class SGW:
                 self.game_screen.blit(self.play_area, self.play_area.get_rect())
 
         smallText = pg.font.Font("freesansbold.ttf", 60)
-
         pg.draw.rect(self.game_screen, (0, 100, 255), (810, 80, 160, 95), 5)
         pg.draw.rect(self.game_screen, (255, 255, 255), (810, 80, 160, 95))
         textSurf, textRect = self.text_objects("" + str(self.env.total_score), smallText)
@@ -280,7 +217,6 @@ class SGW:
                     cell_val = self.env.grid.get_human_cell_value(r_, c_, self.FOGOFWAR)
 
                     # Trying to display images
-
                     if [r_, c_] not in self.env.grid.shown:
                         if cell.terrain == Terrains.wall:
                             self.game_screen.blit(wall_d_texture, (c_ * 80, r_ * 80))
@@ -470,12 +406,9 @@ class SGW:
                             game_exit = True
                     # Exit game upon window close
 
-
                 # Exit game upon window close
                 if event.type == pg.QUIT:
                     game_exit = True
-
-
                 elif self.turn < self.max_turn and not self.is_game_over:
 
                     # Execute main turn logic

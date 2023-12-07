@@ -28,7 +28,7 @@ if __name__ == '__main__':
     map_file = "./gym_sgw/envs/maps/new_map5.xls"  # None -> random map, map files have top priority
     max_energy = 50
     rand_prof = None
-    num_rows = 10
+    num_rows = 10 # in order to change this, must change fog of war function (observation_space)in "grid.py"
     num_cols = 10
 
     # Create and run game with those params
