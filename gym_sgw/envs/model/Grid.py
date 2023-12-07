@@ -317,6 +317,8 @@ class Grid:
             self._execute_turn_left()
         elif action == Actions.turn_right:
             self._execute_turn_right()
+        elif action == Actions.step_down:
+            self._execute_step_down
         # Didn't find a valid action so defaulting to none
         elif action == Actions.none:
             pass
@@ -344,6 +346,44 @@ class Grid:
             next_pos = [curr_pos[0] - 1, curr_pos[1]]
         elif self.player_orientation == Orientations.down:
             next_pos = [curr_pos[0] + 1, curr_pos[1]]
+        else:
+            raise RuntimeError('Invalid orientation when trying to move forward')
+
+        # Check validity of move
+        if not self._is_valid_move(next_pos):
+            next_pos = curr_pos
+
+        # Update the player's position
+        self.player_location = next_pos
+
+        # Grab the current and next cell
+        curr_cell = self.grid[curr_pos[0]][curr_pos[1]]
+        next_cell = self.grid[next_pos[0]][next_pos[1]]
+
+        # Update the player's position in the cells
+        curr_cell.remove_map_object(MapObjects.player)
+        next_cell.add_map_object(MapObjects.player)
+
+        # Update the map objects in cells so they move with the player (update injured, passengers)
+        if MapObjects.injured in curr_cell.objects:
+            curr_cell.remove_map_object(MapObjects.injured)
+            next_cell.add_map_object(MapObjects.injured)
+        elif MapObjects.zombing in curr_cell.objects:
+            curr_cell.remove_map_object(MapObjects.zombing)
+            next_cell.add_map_object(MapObjects.zombing)
+    
+    def _execute_step_down(self):
+
+        # Get the next position based on orientation
+        curr_pos = self.player_location
+        if self.player_orientation == Orientations.right:
+            next_pos = [curr_pos[0], curr_pos[1] - 1]
+        elif self.player_orientation == Orientations.left:
+            next_pos = [curr_pos[0], curr_pos[1] + 1]
+        elif self.player_orientation == Orientations.up:
+            next_pos = [curr_pos[0] + 1, curr_pos[1]]
+        elif self.player_orientation == Orientations.down:
+            next_pos = [curr_pos[0] - 1, curr_pos[1]]
         else:
             raise RuntimeError('Invalid orientation when trying to move forward')
 

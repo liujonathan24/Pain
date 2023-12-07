@@ -427,7 +427,7 @@ class SGW:
                         if event.key in [pg.K_d, pg.K_RIGHT, pg.K_2]:
                             action = Actions.turn_right
                         if event.key in [pg.K_s, pg.K_DOWN, pg.K_0]:
-                            action = Actions.none
+                            action = Actions.step_down
 
                     if action is not None:
                         if action in [Actions.step_forward, Actions.turn_right, Actions.turn_left, Actions.none]:
