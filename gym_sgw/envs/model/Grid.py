@@ -51,7 +51,7 @@ class Grid:
             for c_ in range(len(empty_grid[r_])):
                 # Start the player in the middle of the grid facing right
                 if r_ == int(self.rows // 2) and c_ == int(self.cols // 2):
-                    grid[r_][c_].add_map_object(MapObjects.player)
+                    empty_grid[r_][c_].add_map_object(MapObjects.player)
                     self.player_location = [r_, c_]
                     self.player_orientation = Orientations.right
                     continue
