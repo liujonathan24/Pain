@@ -797,10 +797,11 @@ class Grid:
                     # Add zombie to new coords
                     self.new_grid[next_pos[0]][next_pos[1]].add_map_object(MapObjects.zombie)
                 else:
-                    # Remove pedestrian
-                    self.new_grid[coords[0]][coords[1]].remove_map_object(MapObjects.pedestrian)
-                    # Add pedestrian to new coords
-                    self.new_grid[next_pos[0]][next_pos[1]].add_map_object(MapObjects.pedestrian)
+                    if MapObjects.pedestrian in self.new_grid[coords[0]][coords[1]].objects:
+                        # Remove pedestrian
+                        self.new_grid[coords[0]][coords[1]].remove_map_object(MapObjects.pedestrian)
+                        # Add pedestrian to new coords
+                        self.new_grid[next_pos[0]][next_pos[1]].add_map_object(MapObjects.pedestrian)
                 # Reset old zombie/pedestrian orientation
                 self.new_grid[coords[0]][coords[1]].zombie_pedestrian_orientation = None
                 # Add new zombie/pedestrian orientation
@@ -1093,9 +1094,8 @@ class Grid:
                     # Move right
                     print('moving right')
                     if self.grid[human_coords[0]][human_coords[1]].zombie_pedestrian_orientation == Orientations.up:
-                        self._execute_zombie_pedestrian_right(human_coords, 'pedestrian')
-                    elif self.grid[human_coords[0]][
-                        human_coords[1]].zombie_pedestrian_orientation == Orientations.right:
+                        self._execute_zombie_pedestrian_turn_right(human_coords)
+                    elif self.grid[human_coords[0]][human_coords[1]].zombie_pedestrian_orientation == Orientations.right:
                         self._execute_zombie_pedestrian_forward(human_coords)
                     elif self.grid[human_coords[0]][human_coords[1]].zombie_pedestrian_orientation == Orientations.down:
                         self._execute_zombie_pedestrian_turn_left(human_coords)
@@ -1152,6 +1152,7 @@ class Grid:
                     else:
                         print(self.grid[human_coords[0]][human_coords[1]].zombie_pedestrian_orientation)
                         raise ValueError("Missing pedestrian orientation")
+
             elif zomb_coords[0] - human_coords[0] > 0:
                 # Move left
                 print('moving left')
