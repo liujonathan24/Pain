@@ -1096,7 +1096,7 @@ class Grid:
                     if self.grid[human_coords[0]][human_coords[1]].zombie_pedestrian_orientation == Orientations.up:
                         self._execute_zombie_pedestrian_turn_right(human_coords)
                     elif self.grid[human_coords[0]][human_coords[1]].zombie_pedestrian_orientation == Orientations.right:
-                        self._execute_zombie_pedestrian_forward(human_coords)
+                        self._execute_zombie_pedestrian_forward(human_coords, "pedestrian")
                     elif self.grid[human_coords[0]][human_coords[1]].zombie_pedestrian_orientation == Orientations.down:
                         self._execute_zombie_pedestrian_turn_left(human_coords)
                     elif self.grid[human_coords[0]][human_coords[1]].zombie_pedestrian_orientation == Orientations.left:
