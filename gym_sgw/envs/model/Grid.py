@@ -61,7 +61,25 @@ class Grid:
                 if curr_cell.terrain is Terrains.out_of_bounds:
                     continue
 
-                # Do what we want with the rest of the cells
+        # Do what we want with the rest of the cells
+        visited_list = []
+        # Set Hospital
+        x,y = random.randint(1, 8), random.randint(1, 8)
+        visited_list.append([x,y])
+        empty_grid[x][y].terrain = Terrains.hospital
+        #Add zombie
+        counter = 0
+        while counter<4:
+            x, y = random.randint(1, 8), random.randint(1, 8)
+            if [x,y] not in visited_list:
+                empty_grid[x][y].add_map_object(MapObjects.zombie)
+                orientation = random.choice([0, 1, 2, 3])
+                empty_grid[x][y].zombie_pedestrian_orientation = orientation
+                visited_list.append([x,y])
+                counter+=1
+
+        return empty_grid
+
 
 
     def read_in_map(self):
