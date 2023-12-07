@@ -19,7 +19,8 @@ class Grid:
         self.random_profile = random_profile
         self.player_orientation = None
         self.player_location = None
-        self.grid = self.random_grid()
+        self.grid = self.generate_grid()
+
         self.map_max_energy = None
         self.turns = 0
         self.zombies_squished = 0
@@ -41,6 +42,27 @@ class Grid:
                 self.last_seen[-1].append(Cell(cell.terrain))
                 if MapObjects.injured in cell.objects:
                     self.last_seen[-1][-1].add_map_object(MapObjects.injured)
+
+    def generate_grid(self):
+        empty_grid = self._get_empty_grid_with_borders()
+
+        # for each cell in the grid
+        for r_ in range(len(empty_grid)):
+            for c_ in range(len(empty_grid[r_])):
+                # Start the player in the middle of the grid facing right
+                if r_ == int(self.rows // 2) and c_ == int(self.cols // 2):
+                    grid[r_][c_].add_map_object(MapObjects.player)
+                    self.player_location = [r_, c_]
+                    self.player_orientation = Orientations.right
+                    continue
+                curr_cell = empty_grid[r_][c_]
+
+                # Leave in place any border walls that we may have set already in the grid when we initialized it.
+                if curr_cell.terrain is Terrains.out_of_bounds:
+                    continue
+
+                # Do what we want with the rest of the cells
+
 
     def read_in_map(self):
 
