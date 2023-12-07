@@ -318,7 +318,7 @@ class Grid:
         elif action == Actions.turn_right:
             self._execute_turn_right()
         elif action == Actions.step_down:
-            self._execute_step_down
+            self._execute_step_down()
         # Didn't find a valid action so defaulting to none
         elif action == Actions.none:
             pass

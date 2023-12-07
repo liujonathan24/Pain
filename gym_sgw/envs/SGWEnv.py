@@ -125,6 +125,8 @@ class SGW(gym.Env):
             return Actions.turn_right
         if input_str in ['step_forward', 'forward', 'step', 'move', 'space_key', 3, '3', Actions.step_forward]:
             return Actions.step_forward
+        if input_str in ['step_down', 'down', 'step', 'move', 's_key', 4, '4', Actions.step_down]:
+            return Actions.step_down
         print('WARNING: no valid action found while encoding action: {}'.format(input_str))
         return Actions.none
 
