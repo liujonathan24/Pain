@@ -148,11 +148,11 @@ class Grid:
         return grid
 
     def random_grid(self):
-        empty_grid = self._get_empty_grid_with_boarders()
+        empty_grid = self._get_empty_grid_with_borders()
         random_grid = self._random_fill_setup(empty_grid)
         return random_grid
 
-    def _get_empty_grid_with_boarders(self) -> List:
+    def _get_empty_grid_with_borders(self) -> List:
         grid = list()
         for r_ in range(self.rows):
             row_data = []
@@ -193,7 +193,7 @@ class Grid:
                     continue
                 curr_cell = grid[r_][c_]
 
-                # Leave in place any boarder walls that we may have set already in the grid when we initialized it.
+                # Leave in place any border walls that we may have set already in the grid when we initialized it.
                 if curr_cell.terrain is Terrains.out_of_bounds:
                     continue
 
