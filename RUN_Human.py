@@ -39,6 +39,6 @@ if __name__ == '__main__':
         rand_prof=rand_prof,
         num_rows=num_rows,
         num_cols=num_cols,
-        fogofwar=False
+        fogofwar=True
     )
     sgw_env.run()

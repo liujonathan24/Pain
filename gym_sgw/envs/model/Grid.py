@@ -46,27 +46,45 @@ class Grid:
     def generate_grid(self):
         empty_grid = self._get_empty_grid_with_borders()
 
-        # for each cell in the grid
-        for r_ in range(len(empty_grid)):
-            for c_ in range(len(empty_grid[r_])):
-                # Start the player in the middle of the grid facing right
-                if r_ == int(self.rows // 2) and c_ == int(self.cols // 2):
-                    empty_grid[r_][c_].add_map_object(MapObjects.player)
-                    self.player_location = [r_, c_]
-                    self.player_orientation = Orientations.right
-                    continue
-                curr_cell = empty_grid[r_][c_]
 
-                # Leave in place any border walls that we may have set already in the grid when we initialized it.
-                if curr_cell.terrain is Terrains.out_of_bounds:
-                    continue
+        
+        empty_grid[5][5].add_map_object(MapObjects.player)
+        self.player_location = [5, 5]
+        self.player_orientation = Orientations.right
+
 
         # Do what we want with the rest of the cells
-        visited_list = []
+        visited_list = [[5,5]]
         # Set Hospital
         x,y = random.randint(1, 8), random.randint(1, 8)
         visited_list.append([x,y])
         empty_grid[x][y].terrain = Terrains.hospital
+        # Add walls
+        counter = 0
+        while counter<8:
+            x, y = random.randint(1, 8), random.randint(1, 8)
+            if [x,y] not in visited_list:
+                empty_grid[x][y].terrain = Terrains.wall
+                visited_list.append([x,y])
+                counter+=1
+        #Add fire
+        counter = 0
+        while counter<2:
+            x, y = random.randint(1, 8), random.randint(1, 8)
+            if [x,y] not in visited_list:
+                empty_grid[x][y].terrain = Terrains.fire
+                visited_list.append([x,y])
+                counter+=1
+        #Add pedestrian
+        counter = 0
+        while counter<4:
+            x, y = random.randint(1, 8), random.randint(1, 8)
+            if [x,y] not in visited_list:
+                empty_grid[x][y].add_map_object(MapObjects.pedestrian)
+                orientation = random.choice([0, 1, 2, 3])
+                empty_grid[x][y].zombie_pedestrian_orientation = orientation
+                visited_list.append([x,y])
+                counter+=1
         #Add zombie
         counter = 0
         while counter<4:
@@ -77,10 +95,18 @@ class Grid:
                 empty_grid[x][y].zombie_pedestrian_orientation = orientation
                 visited_list.append([x,y])
                 counter+=1
+        #Add injured
+        counter = 0
+        while counter<4:
+            x, y = random.randint(1, 8), random.randint(1, 8)
+            if [x,y] not in visited_list:
+                empty_grid[x][y].add_map_object(MapObjects.injured)
+                visited_list.append([x,y])
+                counter+=1
+
 
         return empty_grid
-
-
+        
 
     def read_in_map(self):
 

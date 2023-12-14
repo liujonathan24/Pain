@@ -13,3 +13,12 @@ data_log.json
 gym_sgw/envs/__pycache__/SGWEnv.cpython-37.pyc
 gym_sgw/envs/enums/__pycache__/Enums.cpython-37.pyc
 gym_sgw/envs/model/__pycache__/Grid.cpython-37.pyc
+logs/Human_Play_Zombie_Data.json
+gym_sgw/envs/Print_Colors/__pycache__/PColor.cpython-311.pyc
+gym_sgw/envs/model/__pycache__/Grid.cpython-311.pyc
+gym_sgw/envs/model/__pycache__/Cell.cpython-311.pyc
+gym_sgw/envs/enums/__pycache__/Enums.cpython-311.pyc
+gym_sgw/envs/__pycache__/SGWEnv.cpython-311.pyc
+gym_sgw/__pycache__/__init__.cpython-311.pyc
+data_log.json
+__pycache__/SGWHumanPlay.cpython-311.pyc
